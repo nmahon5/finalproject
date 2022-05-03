@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    
+    apicallValue();
+
+    function apicallValue() {
+        APIkey = 'ba5f62c289302e10e6b97c28a8274949';
+        lat = '41.8781';
+        lon = '-87.6298';
+        units = 'imperial';
+        
+
+        $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}&units=${units}`,
+        async: false,
+        crossDomain: true,
+
+
+        complete: function (response) {
+            if (response.readyState === 4 && response.status === 200){
+                console.log(response);
+
+                temp = response.responseJSON.main.temp;
+                desc = response.responseJSON.weather[0].description;
+                country = response.responseJSON.sys.country;
+                city = response.responseJSON.name;
+                feels_like = response.responseJSON.main.feels_like;
+
+                console.log(country);
+                console.log(city);
+                console.log(desc);
+                console.log(temp);
+                console.log(feels_like);
+
+            }
+        }
+    })
+    }
+
+    
+    
+
+
+
+</script> 

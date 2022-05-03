@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>launch pad setup</title>
+    <script src="./app.js"></script>
+    <script src="https://cdnjs.deepai.org/deepai.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./style.css"></script>
+</head>
+<body>
+
+    <h1 id="testelm">this is a test of your local station</h1>
+    <img src="https://interactive.wttw.com/sites/default/files/explore-chicago-from-the-air-hero_02.jpg"> chicago
+    <img src="https://blog-www.pods.com/wp-content/uploads/2019/04/MG_1_1_New_York_City-1.jpg"> new york
+    <img src="https://www.visittheusa.com/sites/default/files/styles/hero_l/public/images/hero_media_image/2017-03/GallatinNatlForest_Bozeman_shutterstock_15145891_Web72DPI.jpg?itok=4mDrLDin"> bozeman
+    <img src="https://e291f1206726d700191b-d0cedd1cc05016668dc83bc2742129e5.ssl.cf1.rackcdn.com/windsong/media/photo-intro-5fbfa58f5f0cf.jpg"> bahamas
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/3Falls_Niagara.jpg"> niagara falls
+    <img src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F9%2F2021%2F11%2F09%2Fguadalajara-city-guide-FT-BLOG1121-4.jpg"> guadalajara
+    <img src="https://www.undercanvas.com/wp-content/uploads/2021/07/Grand-Canyon-scaled.jpg"> grand canyon
+    <img src="https://media.cntraveler.com/photos/5cc23e267a570ff0cdde82c6/master/w_4000,h_2667,c_limit/BAHIA_EBFR4G.jpg"> Florida
+    <img src="https://www.gonext.com/wp-content/uploads/2019/10/Portland-Oregon_iS_994318522_web.jpg"> Oregon 
+
+
+</body>
+</html>
+<script>
+    
+    apicallValue();
+
+    function apicallValue() {
+        APIkey = 'ba5f62c289302e10e6b97c28a8274949';
+        lat = '41.8781';
+        lon = '-87.6298';
+        units = 'imperial';
+        
+
+        $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}&units=${units}`,
+        async: false,
+        crossDomain: true,
+
+
+        complete: function (response) {
+            if (response.readyState === 4 && response.status === 200){
+                console.log(response);
+
+                temp = response.responseJSON.main.temp;
+                desc = response.responseJSON.weather[0].description;
+                country = response.responseJSON.sys.country;
+                city = response.responseJSON.name;
+                feels_like = response.responseJSON.main.feels_like;
+
+                console.log(country);
+                console.log(city);
+                console.log(desc);
+                console.log(temp);
+                console.log(feels_like);
+
+            }
+        }
+    })
+    }
+
+    
+    
+
+
+
+</script> 

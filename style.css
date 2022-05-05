@@ -1,8 +1,23 @@
-body{
-    background-color: rgba(0,0,0,1);
-    
-}
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
 
 img{
-    size: 10px;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+body{
+    background-color:black;
+    
+    text-align: center;
+}
+
+h1{
+    font-family: 'Amatic SC', cursive;
+    font-size: 3em;
+
+    text-align: center;
+
+    color: white;
+
 }
